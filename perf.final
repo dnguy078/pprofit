@@ -1,0 +1,10 @@
+go-wrk -d 60 http://localhost:8080/dennis@golang.org
+Running 60s test @ http://localhost:8080/dennis@golang.org
+  10 goroutine(s) running concurrently
+1263847 requests in 59.129851605s, 106.07MB read
+Requests/sec:		21374.09
+Transfer/sec:		1.79MB
+Avg Req Time:		467.856µs
+Fastest Request:	40.768µs
+Slowest Request:	15.047626ms
+Number of Errors:	0

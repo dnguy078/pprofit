@@ -20,4 +20,11 @@ deps:
 		$(GOGET) github.com/tsliwowicz/go-wrk
 perf: 
 		go-wrk -d 60 $(WEBSERVER_ADDR)/dennis@golang.org
-	
+bench:
+		go test -bench . -cpuprofile prof.cpu
+pprof:
+		pprof pprofit.test prof.cpu
+pprofweb:
+		pprof -http "localhost:1234" prof.cpu
+
+

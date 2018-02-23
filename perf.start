@@ -1,0 +1,9 @@
+Running 5s test @ http://localhost:8080/dennis@golang.org
+  10 goroutine(s) running concurrently
+52785 requests in 4.961928983s, 5.18MB read
+Requests/sec:		10638.00
+Transfer/sec:		1.04MB
+Avg Req Time:		940.026µs
+Fastest Request:	68.302µs
+Slowest Request:	26.310421ms
+Number of Errors:	0

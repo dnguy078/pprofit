@@ -40,3 +40,25 @@ func TestHandler(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkHandler(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		req, err := http.NewRequest(
+			http.MethodGet,
+			"http://localhost:8080/dennis@golang.org",
+			nil,
+		)
+		if err != nil {
+			b.Fatalf("could not create request: %v", err)
+		}
+		rec := httptest.NewRecorder()
+		handler(rec, req)
+
+		if rec.Code != http.StatusOK {
+			b.Errorf("expected status code 200, got %d", rec.Code)
+		}
+		if !strings.Contains(rec.Body.String(), "$$$") {
+			b.Errorf("expected response body to be %s, got %s", "$$$", rec.Body.String())
+		}
+	}
+}
