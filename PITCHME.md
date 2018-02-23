@@ -29,25 +29,14 @@ Then analyze the profile:
 ```
 pprof [binary] prof.cpu
 ```
-
-- ```import _ net/http/pprof``` to add /debug/pprof endpoints in your service. Start the profile and analyze the results directly:
+---
+## Ways to get started using pprof
+```import _ net/http/pprof``` to add /debug/pprof endpoints in your service. Start the profile and analyze the results directly:
 
 ```
 go tool pprof -seconds 5 http://localhost:6060/debug/pprof/profile
 ```
----
----?code=main.go&lang=golang&title=main.go
-
-
-
-----
-
----?code=main_test.go&lang=golang&title=main_test.go
-
 
 ---
 
----?code=Makefile&title=Makefile
-
-
----
+## Demo
