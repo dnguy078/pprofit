@@ -1,24 +1,28 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	_ "net/http/pprof"
-
-	"github.com/gin-gonic/gin"
+	"regexp"
 )
 
 func main() {
-	go func() {
-		log.Println(http.ListenAndServe(":6060", nil))
-	}()
+	http.HandleFunc("/", handler)
+	log.Println("starting server on :8080")
+	log.Fatal(http.ListenAndServe(":8080", nil))
+}
 
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
+func handler(w http.ResponseWriter, r *http.Request) {
+	re := regexp.MustCompile("^(.+)@golang.org$")
+	path := r.URL.Path[1:]
+	match := re.FindAllStringSubmatch(path, -1)
 
-	r.Run(":8080")
+	if match != nil {
+		fmt.Fprintln(w, "$$$")
+		return
+	}
+
+	fmt.Fprintln(w, "Hello, World!")
 }
