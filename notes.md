@@ -3,6 +3,8 @@ pprof notes
 1. pprof
  - start a server exposing pprof endpoint
  - go tool pprof -seconds=10 localhost:8080/debug/pprof/profile  
+ --10
+    pprof -seconds=10 localhost:8080/debug/pprof/profile 
     ** profile the application for 10 seconds
  - start load testing
 
